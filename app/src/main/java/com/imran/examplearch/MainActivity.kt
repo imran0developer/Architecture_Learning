@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var textView: EditText
     lateinit var mainVM: MainVM
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         mainVM = ViewModelProvider(this,MainVMFactory()).get(MainVM::class.java)
 
-textView = findViewById(R.id.textView)
+        textView = findViewById(R.id.textView)
 
         mainVM.facts.observe(this){
             Log.d("TAG2", "onCreate: $it")
