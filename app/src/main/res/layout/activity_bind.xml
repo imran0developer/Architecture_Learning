@@ -3,10 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+<!--    <data>
         <variable
             name="note"
-            type="com.imran.examplearch.Note" />
+            type="com.imran.examplearch.Models.Note" />
+    </data>-->
+    <data>
+        <variable
+            name="mainVM"
+            type="com.imran.examplearch.viewModels.MainVM" />
     </data>
 
     <LinearLayout
@@ -20,24 +25,37 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{note.title}" />
+            android:text="@{mainVM.msg.title}"
+            android:textColor="#ED2424"/>
 
         <TextView
             android:id="@+id/des"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{note.des}" />
+            android:text="@{mainVM.msg.des}"
+            android:textColor="#ED2424"/>
         <EditText
+            android:id="@+id/input_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{mainVM.msg.title}"
+            android:textColor="@color/black"
             android:layout_marginTop="30dp"
-            android:id="@+id/input"
+             />
+        <EditText
+
+            android:id="@+id/input_des"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-             />
+            android:layout_marginTop="30dp"
+            />
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="update" />
+            android:text="update"
+            android:onClick="@{()->mainVM.updateMsg()}"
+            />
     </LinearLayout>
 </layout>

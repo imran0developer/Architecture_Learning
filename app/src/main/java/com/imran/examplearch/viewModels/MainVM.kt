@@ -1,7 +1,9 @@
-package com.imran.examplearch
+package com.imran.examplearch.viewModels
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.imran.examplearch.models.Note
 
 class MainVM() :  ViewModel(){
 
@@ -12,9 +14,16 @@ class MainVM() :  ViewModel(){
     fun updateFact(fact:String){
         facts.value = fact
     }
+/*
     fun updateMsg(note: Note){
         msg.value = note
     }
+*/
+    fun updateMsg(){
+        msg.value = Note("pain","gain")
+    Log.d("TAG2", "updateMsg: method is called")
+    }
+
 
 
     var count = 8

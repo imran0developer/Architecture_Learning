@@ -2,13 +2,12 @@ package com.imran.examplearch
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import kotlin.math.log
+import com.imran.examplearch.viewModelFactory.MainVMFactory
+import com.imran.examplearch.viewModels.MainVM
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,10 +18,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        lifecycle.addObserver(Observer())
         Log.d("TAG2", "onCreate: Activity On-Create")
 
-        mainVM = ViewModelProvider(this,MainVMFactory()).get(MainVM::class.java)
+        mainVM = ViewModelProvider(this, MainVMFactory())[MainVM::class.java]
 
         textView = findViewById(R.id.textView)
 
@@ -44,11 +42,5 @@ class MainActivity : AppCompatActivity() {
         Log.d("TAG2", "onStop: Activity On-Stop")
     }
 
-    fun increment(view: View) {
-        val str = textView.text.toString()
-        mainVM.updateFact(str)
 
-//        mainVM.increment()
-//        setText()
-    }
 }

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.imran.examplearch.viewModelFactory.MainVMFactory
+import com.imran.examplearch.viewModels.MainVM
 import com.imran.examplearch.databinding.ActivityBindBinding
 
 class DataBindExample : AppCompatActivity() {
@@ -16,31 +18,20 @@ class DataBindExample : AppCompatActivity() {
         bindExample = DataBindingUtil.setContentView(this,R.layout.activity_bind)
 //        setContentView(R.layout.activity_bind)
 
-        bindVM = ViewModelProvider(this,MainVMFactory()).get(MainVM::class.java)
+        bindVM = ViewModelProvider(this, MainVMFactory())[MainVM::class.java]
 
-        bindVM.msg.observe(this){
-//            val noteObj = Note("Mohabbat mohabbat",it)
-            bindExample.note = it
-        }
-        bindExample.button.setOnClickListener{
-            val text = bindExample.input.text.toString()
-            val text2 = bindExample.input.text.toString()
-            bindVM.updateMsg(Note(text,text2))
 
-//            val noteObj = Note("Mohabbat mohabbat",))
-//            bindExample.note = noteObj
-        }
-
-     /*   bindVM.msg.observe(this){
-            val noteObj = Note("Mohabbat mohabbat",it)
-            bindExample.note = noteObj
-        }
+    /*    bindVM.msg.observe(this){
+            bindExample.title.text = it.title
+            bindExample.des.text = it.des
+        }*/
 
 
 
-        bindExample.button.setOnClickListener{
-            val text = bindExample.input.text.toString()
-            bindVM.updateMsg(text)
+   /*     bindExample.button.setOnClickListener{
+            val text = bindExample.inputTitle.text.toString()
+            val text2 = bindExample.inputDes.text.toString()
+        bindVM.updateMsg(Note(text,text2))
 
 //            val noteObj = Note("Mohabbat mohabbat",))
 //            bindExample.note = noteObj
@@ -48,6 +39,8 @@ class DataBindExample : AppCompatActivity() {
 
 
 
+        bindExample.mainVM = bindVM
+        bindExample.lifecycleOwner = this
 
 
     }
